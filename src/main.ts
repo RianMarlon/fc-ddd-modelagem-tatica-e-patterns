@@ -3,9 +3,8 @@ import Customer from "./domain/entity/customer";
 import Order from "./domain/entity/order";
 import OrderItem from "./domain/entity/order_item";
 
-let customer = new Customer("123", "Wesley Williams");
-let address = new Address("Rua dois", 2, "12345-678", "São Paulo");
-customer.changeAddress(address);
+const address = new Address("Rua dois", 2, "12345-678", "São Paulo");
+const customer = new Customer("123", "Wesley Williams", address);
 customer.activate();
 
 const item1 = new OrderItem("1", "Item 1", 10, "123", 2);

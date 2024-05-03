@@ -23,7 +23,7 @@ describe("Order repository test", () => {
       sync: { force: true },
     });
 
-    await sequelize.addModels([
+    sequelize.addModels([
       CustomerModel,
       OrderModel,
       OrderItemModel,
@@ -38,9 +38,8 @@ describe("Order repository test", () => {
 
   it("should create a new order", async () => {
     const customerRepository = new CustomerRepository();
-    const customer = new Customer("123", "Customer 1");
     const address = new Address("Street 1", 1, "Zipcode 1", "City 1");
-    customer.changeAddress(address);
+    const customer = new Customer("123", "Customer 1", address);
     await customerRepository.create(customer);
 
     const productRepository = new ProductRepository();
@@ -86,9 +85,8 @@ describe("Order repository test", () => {
 
   it("should return a order by id", async () => {
     const customerRepository = new CustomerRepository();
-    const customer = new Customer("C1", "Name");
     const address = new Address("Street 1", 1, "Zipcode 1", "City 1");
-    customer.changeAddress(address);
+    const customer = new Customer("C1", "Name", address);
     await customerRepository.create(customer);
 
     const productRepository = new ProductRepository();
@@ -120,9 +118,8 @@ describe("Order repository test", () => {
 
   it("should return all orders", async () => {
     const customerRepository = new CustomerRepository();
-    const customer = new Customer("C1", "Name");
     const address = new Address("Street 1", 1, "Zipcode 1", "City 1");
-    customer.changeAddress(address);
+    const customer = new Customer("C1", "Name", address);
     await customerRepository.create(customer);
 
     const productRepository = new ProductRepository();
@@ -161,9 +158,8 @@ describe("Order repository test", () => {
 
   it("should add a item to the order", async () => {
     const customerRepository = new CustomerRepository();
-    const customer = new Customer("C1", "Name");
     const address = new Address("Street 1", 1, "Zipcode 1", "City 1");
-    customer.changeAddress(address);
+    const customer = new Customer("C1", "Name", address);
     await customerRepository.create(customer);
 
     const productRepository = new ProductRepository();
@@ -205,9 +201,8 @@ describe("Order repository test", () => {
 
   it("should remove a item from the order", async () => {
     const customerRepository = new CustomerRepository();
-    const customer = new Customer("C1", "Name");
     const address = new Address("Street 1", 1, "Zipcode 1", "City 1");
-    customer.changeAddress(address);
+    const customer = new Customer("C1", "Name", address);
     await customerRepository.create(customer);
 
     const productRepository = new ProductRepository();
