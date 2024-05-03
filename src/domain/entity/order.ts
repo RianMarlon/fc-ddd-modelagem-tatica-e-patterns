@@ -24,6 +24,19 @@ export default class Order {
     return this._items;
   }
 
+  addItem(item: OrderItem): void {
+    this._items.push(item);
+  }
+
+  removeItem(itemId: string): void {
+    this._items = this._items.reduce((acc, item) => {
+      if (item.id !== itemId) {
+        acc.push(item);
+      }
+      return acc;
+    }, []);
+  }
+
   validate(): boolean {
     if (!this._id) {
       throw new Error("Id is required");
