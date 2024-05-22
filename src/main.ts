@@ -3,6 +3,8 @@ import Address from "./domain/customer/value-object/address";
 import Order from "./domain/order/entity/order";
 import OrderItem from "./domain/order/entity/order-item";
 
+Customer.registerEvents();
+
 const address = new Address("Rua dois", 2, "12345-678", "São Paulo");
 const customer = new Customer("123", "Wesley Williams", address);
 customer.activate();
